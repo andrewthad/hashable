@@ -23,6 +23,11 @@ Extra-source-files:
   CHANGES.md, README.md, tests/Properties.hs,
   benchmarks/Benchmarks.hs, benchmarks/cbits/*.c, benchmarks/cbits/*.h
 
+Flag examples
+  Description: Build examples
+  Default: False
+  Manual: True
+
 Flag integer-gmp
   Description: Are we using integer-gmp to provide fast Integer instances?
   Default: True
@@ -146,6 +151,14 @@ benchmark benchmarks
     other-modules:     Data.Hashable.RandomSource
     if os(windows)
       extra-libraries: advapi32
+
+Executable hashable-examples
+  if flag(examples)
+    build-depends: base, hashable
+  else
+    buildable: False
+  hs-source-dirs: examples
+  main-is: Main.hs
 
 source-repository head
   type:     git
