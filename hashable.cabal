@@ -143,6 +143,9 @@ benchmark benchmarks
       c-sources:
         benchmarks/cbits/siphash-sse41.c
 
+  if impl(ghc >= 7.2.1)
+    CPP-Options:     -DGENERICS
+
   Ghc-options:       -Wall -O2
   if impl(ghc >= 6.8)
     Ghc-options: -fwarn-tabs
